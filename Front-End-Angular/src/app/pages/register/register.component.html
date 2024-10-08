@@ -1,7 +1,7 @@
 <form #registerForm="ngForm" (ngSubmit)="register()" novalidate>
   <!-- Trường nhập Username -->
   <div class="mb-3">
-    <label for="username" class="form-label">Username</label>
+    <label for="username" class="form-label">Họ và tên</label>
     <input
       [(ngModel)]="registerRequest.username"
       name="username"
@@ -14,13 +14,13 @@
     >
     <!-- Thông báo lỗi cho Username -->
     <div *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)" class="text-danger">
-      <div *ngIf="usernameInput.errors?.['required']">Username is required.</div>
+      <div *ngIf="usernameInput.errors?.['required']">Họ và tên người dùng là bắt buộc.</div>
     </div>
   </div>
 
   <!-- Trường nhập Email -->
   <div class="mb-3">
-    <label for="email" class="form-label">Email address</label>
+    <label for="email" class="form-label">Địa chỉ email</label>
     <input
       [(ngModel)]="registerRequest.email"
       name="email"
@@ -34,14 +34,14 @@
     >
     <!-- Thông báo lỗi cho Email -->
     <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="text-danger">
-      <div *ngIf="emailInput.errors?.['required']">Email is required.</div>
-      <div *ngIf="emailInput.errors?.['email']">Invalid email format.</div>
+      <div *ngIf="emailInput.errors?.['required']">Email là bắt buộc.</div>
+      <div *ngIf="emailInput.errors?.['email']">Định dạng email không hợp lệ.</div>
     </div>
   </div>
 
   <!-- Trường nhập Password -->
   <div class="mb-3">
-    <label for="password" class="form-label">Password</label>
+    <label for="password" class="form-label">Mật khẩu</label>
     <input
       [(ngModel)]="registerRequest.password"
       name="password"
@@ -55,8 +55,8 @@
     >
     <!-- Thông báo lỗi cho Password -->
     <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="text-danger">
-      <div *ngIf="passwordInput.errors?.['required']">Password is required.</div>
-      <div *ngIf="passwordInput.errors?.['minlength']">Password must be at least 6 characters long.</div>
+      <div *ngIf="passwordInput.errors?.['required']">Mật khẩu là bắt buộc.</div>
+      <div *ngIf="passwordInput.errors?.['minlength']">Mật khẩu phải dài ít nhất 6 ký tự.</div>
     </div>
   </div>
 
