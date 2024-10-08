@@ -1,0 +1,66 @@
+@import url(bootstrap/dist/css/bootstrap.min.css);
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+/* Toàn bộ trang */
+body {
+  background-color: #f8f9fa; /* Màu nền nhẹ */
+  display: flex; /* Sử dụng flexbox */
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  height: 100vh; /* Chiều cao 100% viewport */
+  margin: 0; /* Xóa margin mặc định */
+}
+
+button.btn {
+  width: 100%; /* Chiều rộng 100% */
+  padding: 10px; /* Padding cho nút */
+  border-radius: 4px; /* Bo góc cho nút */
+  background-color: #00ff00; /* Màu nền xanh lá cây */
+  color: white; /* Màu chữ trắng */
+  border: none; /* Xóa đường viền mặc định */
+  font-size: 16px; /* Kích thước chữ */
+}
+
+/* Form đăng nhập và đăng ký */
+form {
+  max-width: 600px; /* Chiều rộng tối đa của form */
+  width: 600px; /* Đảm bảo form chiếm toàn bộ chiều rộng tối đa */
+  padding: 20px; /* Padding cho form */
+  background-color: #ffffff; /* Màu nền trắng */
+  border-radius: 8px; /* Bo góc cho form */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng cho form */
+}
+
+/* Nhãn */
+label {
+  font-weight: bold; /* In đậm nhãn */
+  color: #333333; /* Màu chữ tối */
+}
+
+/* Ô input */
+input.form-control {
+  border: 1px solid #ced4da; /* Đường viền cho input */
+  border-radius: 4px; /* Bo góc cho input */
+}
+
+/* Nhập liệu không hợp lệ */
+.text-danger {
+  font-size: 0.875rem; /* Kích thước chữ nhỏ hơn */
+  margin-top: 0.25rem; /* Khoảng cách giữa input và thông báo lỗi */
+}
+
+/* Nút đăng nhập và đăng ký */
+button.btn {
+  width: 100%; /* Chiều rộng 100% */
+  padding: 10px; /* Padding cho nút */
+  border-radius: 4px; /* Bo góc cho nút */
+  background-color: #28a745; /* Màu nền xanh lá cây */
+  color: white; /* Màu chữ trắng */
+  border: none; /* Xóa đường viền mặc định */
+  font-size: 16px; /* Kích thước chữ */
+}
+
+/* Thay đổi màu sắc khi hover */
+button.btn:hover {
+  background-color: #218838; /* Màu nền khi hover (màu xanh lá cây đậm hơn) */
+}
