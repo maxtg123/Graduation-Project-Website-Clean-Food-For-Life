@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 
@@ -6,6 +6,9 @@ import { AuthService } from '../../auth/auth.service';
   selector: 'app-activate-account',
   templateUrl: './activate-account.component.html',
   styleUrls: ['./activate-account.component.css'],
+  encapsulation: ViewEncapsulation.None
+
+
 })
 export class ActivateAccountComponent {
   activationCode: string = '';
