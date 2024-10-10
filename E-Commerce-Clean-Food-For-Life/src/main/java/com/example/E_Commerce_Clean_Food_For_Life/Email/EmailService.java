@@ -16,7 +16,7 @@ public class EmailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendOtpEmail(String toEmail, String otpCode) {
+    public void sendOtpEmail(String toEmail, String otpCode, String Usename) {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper;
 
@@ -27,7 +27,7 @@ public class EmailService {
             // Set email properties
             helper.setTo(toEmail);
             helper.setSubject("Your OTP Code");
-            helper.setText(generateOtpEmailBody(otpCode), true); // true for HTML content
+            helper.setText(generateOtpEmailBody(otpCode, Usename), true); // true for HTML content
 
             // Send the email
             mailSender.send(message);
@@ -38,12 +38,12 @@ public class EmailService {
         }
     }
 
-    private String generateOtpEmailBody(String otpCode) {
+    private String generateOtpEmailBody(String otpCode, String Usename) {
         // HTML content for the email body
         return "<html>" +
                 "<body>" +
                 "<h1>Your OTP Code</h1>" +
-                "<p>Dear user,</p>" +
+                "<p>Dear" + Usename + ",</p>" +
                 "<p>Your OTP code is: <strong>" + otpCode + "</strong></p>" +
                 "<p>Please enter this code to verify your account.</p>" +
                 "<p>Thank you!</p>" +
