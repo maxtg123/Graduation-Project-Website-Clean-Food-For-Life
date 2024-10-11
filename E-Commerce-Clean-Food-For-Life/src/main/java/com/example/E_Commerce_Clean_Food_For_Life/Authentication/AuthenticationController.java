@@ -1,5 +1,6 @@
 package com.example.E_Commerce_Clean_Food_For_Life.Authentication;
 
+
 import com.example.E_Commerce_Clean_Food_For_Life.user.User;
 import com.example.E_Commerce_Clean_Food_For_Life.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -17,25 +19,6 @@ public class AuthenticationController {
 
     @Autowired
     private UserService userService;
-//
-//    // Đăng ký người dùng
-//    @PostMapping("/register")
-//    public ResponseEntity<String> register(@RequestBody User user) {
-//        userService.registerUser(user);
-//        return ResponseEntity.ok("User registered successfully. Please check your email for OTP.");
-//    }
-//
-//    @PostMapping("/register")
-//    public ResponseEntity<String> register(@RequestBody User user) {
-//        try {
-//            userService.registerUser(user);
-//            return ResponseEntity.ok("User registered successfully. Please check your email for OTP.");
-//        } catch (RuntimeException e) {
-//            return ResponseEntity.badRequest().body(e.getMessage()); // Trả về thông báo lỗi cụ thể
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Đăng ký không thành công. Vui lòng thử lại.");
-//        }
-//    }
 
     @PostMapping("/register")
     public ResponseEntity<Map<String, Object>> register(@RequestBody User user) {
@@ -64,11 +47,64 @@ public class AuthenticationController {
         }
     }
 
-    // Đăng nhập (có thể dùng JWT hoặc session)
+//    @PostMapping("/login")
+//    public ResponseEntity<Map<String, Object>> login(@RequestBody LoginRequest loginRequest) {
+//        Map<String, Object> response = new HashMap<>();
+//
+//        String email = loginRequest.getEmail();
+//        String password = loginRequest.getPassword();
+//
+//        // Tìm người dùng theo email
+//        Optional<User> optionalUser = userService.findByEmail(email);
+//
+//        if (optionalUser.isPresent()) {
+//            User user = optionalUser.get();
+//            // Kiểm tra mật khẩu
+//            if (userService.passwordMatches(password, user.getPassword())) { // Giả sử bạn có phương thức passwordMatches
+//                response.put("success", true);
+//                response.put("message", "Login successful");
+//                // Có thể tạo JWT ở đây nếu cần
+//                return ResponseEntity.ok(response);
+//            } else {
+//                response.put("success", false);
+//                response.put("message", "Invalid password");
+//                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+//            }
+//        } else {
+//            response.put("success", false);
+//            response.put("message", "User not found");
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+//        }
+//    }
+
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestParam String email, @RequestParam String password) {
-        // Viết logic kiểm tra email và password tại đây
-        // Trả về token JWT hoặc thông báo thành công
-        return ResponseEntity.ok("Login successful");
+    public ResponseEntity<Map<String, Object>> login(@RequestBody LoginRequest loginRequest) {
+        Map<String, Object> response = new HashMap<>();
+
+        String email = loginRequest.getEmail();
+        String password = loginRequest.getPassword();
+
+        // Tìm người dùng theo email
+        Optional<User> optionalUser = userService.findByEmail(email);
+
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            // Kiểm tra mật khẩu
+            if (userService.passwordMatches(password, user.getPassword())) {
+                response.put("success", true);
+                response.put("message", "Login successful");
+                // Không cần tạo token
+                return ResponseEntity.ok(response);
+            } else {
+                response.put("success", false);
+                response.put("message", "Invalid password");
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+            }
+        } else {
+            response.put("success", false);
+            response.put("message", "User not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
     }
+
 }

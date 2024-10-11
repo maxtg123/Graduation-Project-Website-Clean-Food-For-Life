@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface TokenRepository extends JpaRepository<Token, Long> {
     Optional<Token> findByUserId(Long userId); // Tìm kiếm token theo userId
-    Optional<Token> findByOtpCode(String otpCode); // Tìm kiếm token theo otpCode
+   Optional<Token> findByOtpCode(String otpCode); // Tìm kiếm token theo otpCode
 }

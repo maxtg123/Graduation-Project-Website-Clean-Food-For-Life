@@ -12,17 +12,20 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  authenticate(body: AuthenticationRequest): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>(`${this.baseUrl}/authenticate`, body);
+  // Cập nhật phương thức authenticate để không trả về token nữa
+  authenticate(body: AuthenticationRequest): Observable<{ success: boolean, message: string }> {
+    return this.http.post<{ success: boolean, message: string }>(`${this.baseUrl}/login`, body); // Đổi thành login
   }
 
-  login(authRequest: AuthenticationRequest): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, authRequest);
+  login(authRequest: AuthenticationRequest): Observable<{ success: boolean, message: string }> {
+    // Phương thức này có thể không cần nữa vì authenticate đã thay thế
+    return this.authenticate(authRequest);
   }
 
   register(request: RegistrationRequest): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, request);
   }
+
   activateAccount(request: { code: string }): Observable<any> {
     // Gửi mã kích hoạt đến API
     return this.http.post(`${this.baseUrl}/activate-account`, request);
