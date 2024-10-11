@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenService } from '../../token/token.service';
 import {AuthenticationRequest} from "../../models/ authenticationrequest";
@@ -7,7 +7,8 @@ import {AuthService} from "../../auth/auth.service";
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.css']
+  styleUrls: ['./login-page.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginPageComponent {
   authRequest: AuthenticationRequest = {email: '', password: ''};

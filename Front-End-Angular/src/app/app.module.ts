@@ -9,12 +9,14 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ActivateAccountComponent } from './pages/activate-account/activate-account.component';
 import { CodeInputModule } from 'angular-code-input';
 import {HttpClientModule} from "@angular/common/http";
+import { IndexComponent } from './module/index/index.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     RegisterComponent,
-    ActivateAccountComponent
+    ActivateAccountComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,

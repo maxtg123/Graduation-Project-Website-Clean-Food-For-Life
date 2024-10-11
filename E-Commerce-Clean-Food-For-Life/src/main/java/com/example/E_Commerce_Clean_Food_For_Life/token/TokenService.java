@@ -33,7 +33,7 @@ public class TokenService {
         tokenRepository.save(token);
 
         // Gửi email OTP
-        emailService.sendOtpEmail(user.getEmail(), otpCode);
+        emailService.sendOtpEmail(user.getEmail(),  otpCode, user.getUsername());
     }
 
     // Xác minh OTP

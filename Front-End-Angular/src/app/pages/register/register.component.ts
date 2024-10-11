@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import { RegistrationRequest } from '../../models/registration-request';
@@ -7,6 +7,8 @@ import { RegistrationRequest } from '../../models/registration-request';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
+  encapsulation: ViewEncapsulation.None
+
 })
 export class RegisterComponent {
   // Đối tượng chứa dữ liệu form
