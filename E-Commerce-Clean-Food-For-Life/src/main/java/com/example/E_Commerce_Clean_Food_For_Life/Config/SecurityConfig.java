@@ -8,6 +8,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.util.List;
+
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -16,14 +19,29 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/register", "/api/auth/activate").permitAll() // Công khai cho mọi người
+                        .requestMatchers("/api/auth/register", "/api/auth/activate", "/api/auth/login").permitAll() // Cho phép mọi người
                         .requestMatchers("/api/admin/**").hasRole("ADMIN") // Chỉ cho admin
                         .anyRequest().hasRole("USER") // Người dùng thông thường
                 )
-                .formLogin(form -> form.defaultSuccessUrl("/home", true))
                 .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login?logout"));
 
         return http.build();
+//                .csrf(csrf -> csrf.disable())
+//                .authorizeHttpRequests(auth -> auth
+//                        .requestMatchers("/api/auth/register", "/api/auth/activate", "/api/auth/login").permitAll() // Công khai cho mọi người
+//                        .requestMatchers("/api/admin/**").hasRole("ADMIN") // Chỉ cho admin
+//                        .anyRequest().hasRole("USER") // Người dùng thông thường
+//                )
+//                .cors(cors -> cors.configurationSource(request -> {
+//                    var source = new org.springframework.web.cors.CorsConfiguration();
+//                    source.setAllowedOrigins(List.of("http://localhost:4200")); // Địa chỉ frontend
+//                    source.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+//                    source.setAllowedHeaders(List.of("*"));
+//                    source.setAllowCredentials(true);
+//                    return source;
+//                }));
+//
+//        return http.build();
     }
 
     @Bean

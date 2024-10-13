@@ -42,8 +42,8 @@ public class EmailService {
         // HTML content for the email body
         return "<html>" +
                 "<body>" +
-                "<h1>Your OTP Code</h1>" +
-                "<p>Dear" + Usename + ",</p>" +
+                "<p>Your OTP Code</p>" +
+                "<p>Dear " + Usename + ",</p>" +
                 "<p>Your OTP code is: <strong>" + otpCode + "</strong></p>" +
                 "<p>Please enter this code to verify your account.</p>" +
                 "<p>Thank you!</p>" +
